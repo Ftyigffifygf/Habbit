@@ -1,0 +1,415 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Smooth transitions */
+* {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Custom animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.3); }
+  50% { box-shadow: 0 0 30px rgba(255, 255, 255, 0.6); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% { 
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Gradient backgrounds */
+.bg-gradient-cosmic {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.bg-gradient-sunset {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.bg-gradient-ocean {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.bg-gradient-forest {
+  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+}
+
+/* Glassmorphism effects */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Button styles */
+.btn-primary {
+  @apply bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 px-6 py-3 rounded-lg text-white font-medium transition-all duration-300 transform hover:scale-105;
+}
+
+.btn-secondary {
+  @apply bg-white bg-opacity-20 hover:bg-opacity-30 px-6 py-3 rounded-lg text-white font-medium transition-all duration-300 backdrop-blur-sm;
+}
+
+.btn-success {
+  @apply bg-gradient-to-r from-green-500 to-teal-600 hover:from-green-600 hover:to-teal-700 px-6 py-3 rounded-lg text-white font-medium transition-all duration-300 transform hover:scale-105;
+}
+
+/* Card styles */
+.card {
+  @apply bg-white bg-opacity-20 backdrop-blur-lg rounded-2xl p-6 border border-white border-opacity-20 transition-all duration-300 hover:bg-opacity-25;
+}
+
+.card-glow {
+  @apply card;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.card-glow:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+/* XP Bar styles */
+.xp-bar {
+  @apply w-full bg-white bg-opacity-20 rounded-full h-3 overflow-hidden;
+}
+
+.xp-fill {
+  @apply bg-gradient-to-r from-yellow-400 to-orange-500 h-full rounded-full transition-all duration-1000 ease-out;
+}
+
+/* Avatar styles */
+.avatar-container {
+  @apply relative w-24 h-24 mx-auto mb-4 rounded-full flex items-center justify-center text-4xl transition-all duration-500;
+}
+
+.avatar-container.level-up {
+  animation: pulse-glow 1s ease-in-out;
+}
+
+/* Habit completion styles */
+.habit-card {
+  @apply card flex items-center justify-between p-4 transition-all duration-300;
+}
+
+.habit-card.completed {
+  @apply bg-green-500 bg-opacity-20 border-green-400 border-opacity-50;
+}
+
+.habit-card:hover {
+  transform: translateX(4px);
+}
+
+/* Mood selector styles */
+.mood-selector {
+  @apply w-12 h-12 rounded-full text-2xl transition-all duration-300 hover:scale-110;
+}
+
+.mood-selector.active {
+  @apply scale-110;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+/* Loading spinner */
+.loading-spinner {
+  @apply animate-spin w-8 h-8 border-4 border-white border-t-transparent rounded-full;
+}
+
+/* Tab navigation */
+.tab-nav {
+  @apply py-4 px-2 border-b-2 font-medium text-sm capitalize transition-colors duration-300;
+}
+
+.tab-nav.active {
+  @apply border-white text-white;
+}
+
+.tab-nav.inactive {
+  @apply border-transparent text-purple-100 hover:text-white hover:border-purple-200;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .container {
+    @apply px-4;
+  }
+  
+  .card {
+    @apply p-4;
+  }
+  
+  .grid {
+    @apply grid-cols-1;
+  }
+}
+
+/* Custom input styles */
+.input-glass {
+  @apply w-full px-4 py-2 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 text-white placeholder-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-300 transition-all duration-300;
+}
+
+.input-glass:focus {
+  @apply bg-opacity-25 border-opacity-50;
+}
+
+/* Progress ring */
+.progress-ring {
+  transform: rotate(-90deg);
+  transition: stroke-dasharray 0.5s ease-in-out;
+}
+
+/* Notification styles */
+.notification {
+  @apply fixed top-4 right-4 bg-white bg-opacity-20 backdrop-blur-lg rounded-lg p-4 border border-white border-opacity-20 text-white z-50 transition-all duration-300;
+}
+
+.notification.success {
+  @apply bg-green-500 bg-opacity-20 border-green-400 border-opacity-50;
+}
+
+.notification.error {
+  @apply bg-red-500 bg-opacity-20 border-red-400 border-opacity-50;
+}
+
+/* Streak counter */
+.streak-counter {
+  @apply text-center p-4 bg-gradient-to-r from-orange-400 to-red-500 rounded-lg text-white;
+}
+
+.streak-counter.active {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Category badges */
+.category-badge {
+  @apply px-3 py-1 rounded-full text-xs font-medium transition-all duration-300;
+}
+
+.category-fitness {
+  @apply bg-red-100 text-red-800;
+}
+
+.category-wellness {
+  @apply bg-green-100 text-green-800;
+}
+
+.category-productivity {
+  @apply bg-blue-100 text-blue-800;
+}
+
+.category-focus {
+  @apply bg-purple-100 text-purple-800;
+}
+
+.category-sleep {
+  @apply bg-indigo-100 text-indigo-800;
+}
+
+/* Achievement popup */
+.achievement-popup {
+  @apply fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 backdrop-blur-sm;
+}
+
+.achievement-content {
+  @apply bg-gradient-to-r from-yellow-400 to-orange-500 p-8 rounded-2xl text-center max-w-md mx-4 transform transition-all duration-300;
+}
+
+.achievement-content.show {
+  transform: scale(1) rotate(0deg);
+}
+
+.achievement-content.hide {
+  transform: scale(0.8) rotate(-5deg);
+}
+
+/* World visualization */
+.world-container {
+  @apply relative w-full h-64 bg-gradient-to-b from-blue-200 to-green-300 rounded-lg overflow-hidden;
+}
+
+.world-element {
+  @apply absolute transition-all duration-500;
+}
+
+/* Habit suggestion cards */
+.suggestion-card {
+  @apply card hover:scale-105 cursor-pointer transition-all duration-300;
+}
+
+.suggestion-card:hover {
+  @apply bg-opacity-30;
+}
+
+/* Stats visualization */
+.stat-card {
+  @apply text-center p-4 bg-white bg-opacity-10 rounded-lg;
+}
+
+.stat-number {
+  @apply text-2xl font-bold text-white;
+}
+
+.stat-label {
+  @apply text-purple-100 text-sm;
+}
+
+/* Mood chart */
+.mood-chart {
+  @apply w-full h-32 bg-white bg-opacity-10 rounded-lg p-4;
+}
+
+/* Quest card */
+.quest-card {
+  @apply bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg p-6 text-white relative overflow-hidden;
+}
+
+.quest-card::before {
+  content: '';
+  @apply absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-10;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* AI coach message */
+.ai-message {
+  @apply bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg p-6 text-white relative;
+}
+
+.ai-message::before {
+  content: '💭';
+  @apply absolute -top-2 -left-2 text-2xl;
+}
+
+/* Custom checkbox */
+.custom-checkbox {
+  @apply w-6 h-6 rounded border-2 border-white border-opacity-50 flex items-center justify-center cursor-pointer transition-all duration-300;
+}
+
+.custom-checkbox.checked {
+  @apply bg-green-500 border-green-500;
+}
+
+/* Floating action button */
+.fab {
+  @apply fixed bottom-6 right-6 w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full flex items-center justify-center text-white text-2xl shadow-lg hover:scale-110 transition-all duration-300 z-40;
+}
+
+/* Habit completion animation */
+@keyframes complete {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+.habit-complete {
+  animation: complete 0.5s ease-in-out;
+}
+
+/* Level up animation */
+@keyframes levelUp {
+  0% { transform: scale(1) rotate(0deg); }
+  25% { transform: scale(1.1) rotate(5deg); }
+  50% { transform: scale(1.2) rotate(-5deg); }
+  75% { transform: scale(1.1) rotate(5deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+.level-up {
+  animation: levelUp 1s ease-in-out;
+}
+
+/* Responsive grid */
+.responsive-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+}
+
+/* Habit streak visualization */
+.streak-dot {
+  @apply w-3 h-3 rounded-full mx-1 transition-all duration-300;
+}
+
+.streak-dot.active {
+  @apply bg-green-400;
+}
+
+.streak-dot.inactive {
+  @apply bg-gray-400;
+}
+
+/* Avatar evolution stages */
+.avatar-seedling {
+  @apply text-green-300;
+}
+
+.avatar-sprout {
+  @apply text-green-400;
+}
+
+.avatar-tree {
+  @apply text-green-500;
+}
+
+.avatar-ancient {
+  @apply text-green-600;
+}
+
+.avatar-magical {
+  @apply text-yellow-400;
+}
+
+.avatar-legendary {
+  @apply text-red-400;
+}
